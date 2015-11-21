@@ -1,0 +1,94 @@
+   <md-card class="card">
+            <md-toolbar class="toolbar-color" hide-sm>
+                <div class="md-toolbar-tools">
+                   
+                    <img src="images/logo.png"  style="width:46px;height:46px;">
+                    <span class="headerText">Trackr</span>
+                    <span class="headerSubText" hide-sm>-live tracking made easy!</span>
+                    <span class="headerCountText" flex-offset-gt-md="30"> Api Hits : {{main.api_hit}} | Total Parcels : {{main.list_parcel.length}}</span>
+                </div>
+            </md-toolbar>
+
+             <md-toolbar class="toolbar-color" hide-gt-sm layout="column">
+                <div class="md-toolbar-tools" flex>
+                   
+                    <img src="images/logo.png"  style="width:46px;height:46px;">
+                    <span class="headerText">Trackr</span>
+                     <span class="headerSubText">-live tracking made easy!</span>
+                </div>
+
+                  <div flex class="headerCountTextSmall"> Api Hits : {{main.api_hit}} | Total Parcels : {{main.list_parcel.length}}</div>
+            </md-toolbar>
+
+            <md-card-content layout="row" class="card_content" layout-sm="column">
+                <md-card flex layout="column">
+                    <md-input-container flex style="padding-left:2%">
+                        <label>Search(By Parcel, Price, Weight)</label>
+                        <input type="text" ng-model="search">
+                    </md-input-container>
+
+
+                          <md-list-item class="md-1-line" ng-repeat="parcel in main.list_parcel | filter:search | orderBy:main.orderByKey" flex>
+                              <i class="fa fa-leaf"></i>
+
+                              <p class="list-padding">{{ parcel.name}}</p>
+                              <p style="text-align:right;padding-right:5px;">&#8377; {{parcel.price}}</p>
+                              <i class="fa fa-chevron-circle-down" style="cursor:pointer;" ng-click="main.openProduct(parcel,$index)" ng-hide="main.hide[$index]" ng-class="expression"></i>
+
+                               <i class="fa fa-chevron-circle-right" style="cursor:pointer;" ng-click="main.openProduct(parcel,$index)" ng-show="main.hide[$index]" ng-class="expression"></i>
+                              <md-divider></md-divider>
+                        </md-list-item>
+                        <div layout="row" flex>
+                            <p style="padding-left:5%">Sort By :</p> <md-button  class="md-primary md-raised" ng-click="main.orderBy('name')">Name</md-button><md-button  class="md-primary md-raised" ng-click="main.orderBy('price')">Price</md-button>
+                        </div>
+                </md-card>
+
+                <md-card flex layout="column">
+                      <div flex="50" layout="row">
+                          <div flex="column" style="padding-top:3%;">
+                              <div flex="50" flex-sm="100">
+                                  <img src="{{main.parcel.image}}">
+                              </div>
+
+                              <div flex>
+                                  <md-input-container style="    padding-left: 5%;">
+                                      <label>ETA</label>
+                                      <input type="date" ng-disabled="true" ng-model="main.etaDate" >
+                                  </md-input-container>
+                              </div>
+                          </div>
+
+                          <div flex>
+                             <md-card>
+                                     <p class="product-header">{{main.parcel.name}}</p>
+
+                                     <md-card-content layout="column" >
+                                        <div layout="row" layout-sm="column">
+                                            <p flex><i class="fa fa-shopping-cart"></i> {{main.parcel.type}} </p>
+                                            <p flex><i class="fa fa-inr" ></i> {{main.parcel.price}} </p>
+                                        </div>
+
+                                         <div layout="row" layout-sm="column">
+                                            <p flex><i class="fa fa-balance-scale"></i> {{main.parcel.weight}} </p>
+                                            <p flex><i class="fa fa-houzz"></i> {{main.parcel.quantity}} </p>
+                                        </div>
+                                         <div layout="row" layout-sm="column">
+                                            <p flex><i class="fa fa-phone-square"></i> {{main.parcel.phone}} </p>
+                                            <p flex><i class="fa fa-square" style="color:{{main.parcel.color}}"></i> Color </p>
+                                        </div>
+                                     </md-card-content>
+                              </md-card>
+                          </div>
+                      </div>
+
+                      <div layout="column" flex>
+                          <md-button class="md-raised" flex="20" ng-click="main.refresh()"> Update Location[Live Update]</md-button>
+                          <div id="googleMap" flex></div>
+                      </div>
+                      <div layout="row" flex="10" layout-align="center center">
+                          <md-button class="md-raised md-warn" ng-click="main.like(main.parcel)"><i class="fa fa-thumbs-up" ></i> Like {{main.likeCount}} </md-button>
+                          <md-button class="md-raised md-warn" ng-click="main.share(main.parcel)"><i class="fa fa-share-alt"></i> Share</md-button>
+                      </div>
+                </md-card>
+            </md-card-content>
+</md-card>

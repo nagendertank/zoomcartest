@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+    <!-- endbuild -->
+
+   <!--  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"> -->
+  </head>
+  <body ng-app="zoomcarApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <ui-view></ui-view>
+
+   
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+ <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+ <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '832903923445357',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
